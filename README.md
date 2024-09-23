@@ -32,7 +32,7 @@
 5. systemctl restart zabbix-agent
 6. systemctl enable zabbix-agent
 
-![Configuration > Hosts](https://github.com/lambsanger/for_png/blob/main/2.1.jpg))
+![Configuration > Hosts](https://github.com/lambsanger/for_png/blob/main/2.1.jpg)
 ![лог zabbix agent] (https://github.com/lambsanger/for_png/blob/main/2.2.jpg)
 ![Monitoring > Latest data](https://github.com/lambsanger/for_png/blob/main/2.3.jpg)
 
