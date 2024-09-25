@@ -1,22 +1,20 @@
-# Домашнее задание к занятию "Система мониторинга Zabbix" - `Виноградова Ксения`
+# Домашнее задание к занятию "Система мониторинга Zabbix. Часть 2" - `Виноградова Ксения`
 
 
 ### Задание 1
 
+Создайте свой шаблон, в котором будут элементы данных, мониторящие загрузку CPU и RAM хоста.
 
-1. wget https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.0-4+ubuntu22.04_all.deb
-2. dpkg -i zabbix-release_6.0-4+ubuntu22.04_all.deb
-3. apt update
-4. apt install zabbix-server-pgsql zabbix-frontend-php php8.1-pgsql zabbix-apache-conf zabbix-sql-scripts zabbix-agent
-5. sudo -u postgres createuser --pwprompt zabbix
-6. sudo -u postgres createdb -O zabbix zabbix
-7. zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix
-8. nano /etc/zabbix/zabbix_server.conf (DBPassword=12345)
-9. systemctl restart zabbix-server zabbix-agent apache2
-10. systemctl enable zabbix-server zabbix-agent apache2
+Процесс выполнения
+Выполняя ДЗ сверяйтесь с процессом отражённым в записи лекции.
+В веб-интерфейсе Zabbix Servera в разделе Templates создайте новый шаблон
+Создайте Item который будет собирать информацию об загрузке CPU в процентах
+Создайте Item который будет собирать информацию об загрузке RAM в процентах
+
+Ответ:
 
 
-![Скриншот авторизации](https://github.com/lambsanger/for_png/blob/main/Скриншот%2023-09-2024%20093248.jpg)`
+![Скриншот шаблона](https://github.com/lambsanger/for_png/blob/main/part%202.1.jpg)`
 
 
 ---
@@ -24,17 +22,51 @@
 ### Задание 2
 
 
+Добавьте в Zabbix два хоста и задайте им имена <фамилия и инициалы-1> и <фамилия и инициалы-2>. Например: ivanovii-1 и ivanovii-2.
 
-1. wget https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.0-4+ubuntu22.04_all.deb
-2. dpkg -i zabbix-release_6.0-4+ubuntu22.04_all.deb
-3. apt update
-4. apt install zabbix-agent
-5. systemctl restart zabbix-agent
-6. systemctl enable zabbix-agent
+Процесс выполнения
+Выполняя ДЗ сверяйтесь с процессом отражённым в записи лекции.
+Установите Zabbix Agent на 2 виртмашины, одной из них может быть ваш Zabbix Server
+Добавьте Zabbix Server в список разрешенных серверов ваших Zabbix Agentов
+Добавьте Zabbix Agentов в раздел Configuration > Hosts вашего Zabbix Servera
+Прикрепите за каждым хостом шаблон Linux by Zabbix Agent
+Проверьте что в разделе Latest Data начали появляться данные с добавленных агентов
 
-![Configuration > Hosts](https://github.com/lambsanger/for_png/blob/main/2.1.jpg)
-![лог zabbix agent] (https://github.com/lambsanger/for_png/blob/main/2.2.jpg)
-![Monitoring > Latest data](https://github.com/lambsanger/for_png/blob/main/2.3.jpg)
 
 ---
 
+### Задание 3
+
+
+Привяжите созданный шаблон к двум хостам. Также привяжите к обоим хостам шаблон Linux by Zabbix Agent.
+
+Процесс выполнения
+Выполняя ДЗ сверяйтесь с процессом отражённым в записи лекции.
+Зайдите в настройки каждого хоста и в разделе Templates прикрепите к этому хосту ваш шаблон
+Так же к каждому хосту привяжите шаблон Linux by Zabbix Agent
+Проверьте что в раздел Latest Data начали поступать необходимые данные из вашего шаблона
+
+
+Ответ:
+
+
+![Скриншот хостов с привязкой шаблона](https://github.com/lambsanger/for_png/blob/main/part%202.2-3.jpg)`
+
+---
+
+### Задание 4
+
+
+Создайте свой кастомный дашборд.
+
+Процесс выполнения
+Выполняя ДЗ сверяйтесь с процессом отражённым в записи лекции.
+В разделе Dashboards создайте новый дашборд
+Разместите на нём несколько графиков на ваше усмотрение.
+
+
+Ответ:
+
+
+![Скриншот дашборда](https://github.com/lambsanger/for_png/blob/main/part%202.4.jpg)`
+---
